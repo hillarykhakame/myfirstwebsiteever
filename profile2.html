@@ -1,0 +1,167 @@
+I
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2; /* Light gray background */
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+        }
+        nav {
+            background-color: white;
+            padding: 10px 20px;
+            display: flex;
+            align-items: center;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #ddd;
+        }
+        nav img {
+            width: 50px;
+            height: auto;
+            margin-left: 60px; /* Add margin to the left of the image */
+        }
+        nav ul {
+            margin-left: auto;
+            padding: 0;
+            list-style-type: none;
+            display: flex;
+        }
+        nav ul li {
+            margin-right: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: black;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            height: calc(100% - 60px); /* Adjust according to nav height */
+            margin-top: 60px; /* Adjust according to nav height */
+            transition: margin-left 0.3s;
+        }
+        .sidebar {
+            background-color: white;
+            padding: 20px;
+            width: 250px;
+            position: fixed;
+            top: 60px; /* Adjust according to nav height */
+            left: -250px; /* Initially hide sidebar off the screen */
+            height: calc(100% - 60px); /* Adjust according to nav height */
+            border-right: 1px solid #ddd; /* Gray border */
+            transition: left 0.3s; /* Smooth transition animation */
+            box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+            z-index: 999;
+        }
+        .sidebar.open {
+            left: 0;
+        }
+        .main {
+            padding: 20px;
+            width: 100%;
+            transition: margin-left 0.3s;
+            margin-left: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            text-align: center;
+        }
+        .main.shifted {
+            margin-left: 250px; /* Width of the sidebar */
+        }
+        .profile-pic {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+        hr {
+            border-top: 1px solid #ddd; /* Gray horizontal line */
+            margin-bottom: 20px;
+        }
+        .profile-info {
+            margin-bottom: 20px;
+        }
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        h2 {
+            margin: 0;
+            font-size: 2em;
+        }
+        .toggle-btn {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            z-index: 1001;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+    <nav>
+        <img src="your-image.jpg" alt="Logo">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="academics.html">Academics</a></li>
+        </ul>
+    </nav>
+    <div class="container" id="container">
+        <div class="sidebar" id="sidebar">
+            <img class="profile-pic" src="profile-picture.jpg" alt="Profile Picture">
+            <hr>
+            <div class="profile-info">
+                <p><strong>NAME:</strong> HILLARY KHAKAME</p>
+                <p><strong>ADMISSION:</strong> L6ICT/12616/23S</p>
+                <p><strong>COURSE NAME:</strong> LEVEL 6 ICT TECHNICIAN</p>
+            </div>
+        </div>
+        <div class="main" id="main-content">
+            <h1>Main Section</h1>
+            <section>
+                <h2>Myself</h2>
+                <p>
+                My name is Hillary Khakame, and I am currently pursuing a Level 6 ICT Technician course.<br/> 
+                I began this exciting journey in the year 2023 with the admission number L6ICT/12616/23S.<br/> 
+                I chose to specialize in ICT because of my deep passion for technology and its transformative power in the modern world.<br/> 
+                I have always been fascinated by how technology can solve complex problems and improve efficiency in various industries.<br/>
+                By acquiring advanced skills and knowledge in ICT, I aim to contribute to the development of innovative solutions that can positively impact society and drive progress in the digital</p>
+                <h2>Academic Performance</h2>
+                <p>Paragraph 2 about yourself...</p>
+                <p>Paragraph 3 about yourself...</p>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var mainContent = document.getElementById('main-content');
+            var container = document.getElementById('container');
+            sidebar.classList.toggle('open');
+            mainContent.classList.toggle('shifted');
+            container.classList.toggle('shifted');
+        }
+    </script>
+</body>
+</html>
