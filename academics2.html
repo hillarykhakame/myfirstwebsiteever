@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academics</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            width: 100%;
+            background-color: white;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+            justify-content: left; /* Align items to the right and left */
+        }
+
+        .navbar img {
+            height: 30px;
+        }
+
+        .navbar a {
+            display: block;
+            color: #000;
+            text-align: center;
+            padding: 10px;
+            margin: 0 5px; /* Reduce the space between items */
+            text-decoration: none;
+        }
+
+        .navbar a:hover {
+            background-color: #dddddd;
+            color: black;
+        }
+
+        /* Toggle Button */
+        .toggle-btn {
+            background-color: skyblue;
+            color: white;
+            padding: 10px;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            margin-right: 10px;
+            justify-content: left;
+        }
+
+        /* Content and Sidebar Container */
+        .main-container {
+            display: flex;
+            flex: 1;
+            justify-content: center; /* Center content horizontally */
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            left: -250px;
+            top: 50px; /* Start below the navigation bar */
+            bottom: 0;
+            transition: left 0.3s ease;
+        }
+
+        .sidebar.active {
+            left: 0;
+        }
+
+        .sidebar img {
+            width: 100%;
+            border-radius: 50%;
+        }
+
+        .sidebar hr {
+            margin: 20px 0;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+
+        .sidebar ul li a {
+            color: #000;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .sidebar ul li a:hover {
+            background-color: #ddd;
+        }
+
+        /* Main Content */
+        .content {
+            padding: 20px;
+            text-align: center; /* Center content horizontally */
+        }
+
+        .content h1 {
+            margin: 20px 0;
+        }
+
+        .content p {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <button class="toggle-btn" onclick="toggleSidebar()">☰</button>
+        <img src="your-image-url.jpg" alt="Logo">
+        <a href="index.html">Home</a>
+        <a href="profile.html">Profile</a>
+        <a href="academics.html">Academics</a>
+    </div>
+
+    <!-- Content and Sidebar Container -->
+    <div class="main-container">
+        <!-- Sidebar -->
+        <div class="sidebar" id="sidebar">
+            <img src="your-profile-pic-url.jpg" alt="Profile Picture">
+            <hr>
+            <ul>
+                <li><a href="#" onclick="showContent('bio-data')">Bio Data</a></li>
+                <li><a href="#" onclick="showContent('educational-background')">My major Skills</a></li>
+                <li><a href="#" onclick="showContent('skills')">Skills</a></li>
+            </ul>
+        </div>
+
+        <!-- Main Content -->
+        <div class="content" id="content">
+            <h1>Feel free to explore my info</h1>
+            <p id="bio-data">Your bio data content goes here...</p>
+            <p id="educational-background">Here are my skills</p>
+            <p id="skills">Your skills content goes here...</p>
+        </div>
+    </div>
+
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById('sidebar');
+            var content = document.getElementById('content');
+            if (sidebar.classList.contains('active')) {
+                sidebar.classList.remove('active');
+                content.style.marginLeft = '0';
+            } else {
+                sidebar.classList.add('active');
+                content.style.marginLeft = '250px';
+            }
+        }
+
+        function showContent(id) {
+            var contents = document.querySelectorAll('.content p');
+            contents.forEach(function(content) {
+                content.style.display = 'none';
+            });
+            document.getElementById(id).style.display = 'block';
+        }
+    </script>
+</body>
+</
